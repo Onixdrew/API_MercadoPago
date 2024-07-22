@@ -1,22 +1,30 @@
 const express=require("express");
 const router=express.Router();
+const bcrypt = require('bcrypt');
 const userSchema=require("../models/modelUser")
 
 
 // crear usuario
 router.post("/agregarUser", async (req,res)=>{
     try{
-
-        await userSchema.validate(req.body);
         const encodePassword= await bcrypt.hash(req.body.contraseña, 10)
-        const nuevoUser= new userSchema({...req.body, contraseña:encodePassword})
+        const nuevoUser = new userSchema({
+            nombre: req.body.nombre,
+            correo: req.body.correo,
+            contraseña: encodePassword,
+         
+        });
+
         const user= await nuevoUser.save()
         res.json(user)
-    }catch(error){
-        res.json({message:error})
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error al intentar agregar el usuario' });
     }
 
 })
+
 
 // obtener usuarios
 
