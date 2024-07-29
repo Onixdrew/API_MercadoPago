@@ -1,13 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const Rutas = require("./routes/Usuarios");
+const RutasProductos = require("./routes/Productos");
+const RutasUser = require("./routes/Usuarios");
 
 const app = express();
 const port = process.env.PORT || 9000;
 
 app.use(express.json());
-app.use("/api", Rutas);
+app.use("/api", RutasProductos);
+app.use("/api", RutasUser);
 
 app.get("/", (req, res) => {
   res.send("Bienvenido al API de MercadoPago");
