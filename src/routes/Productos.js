@@ -13,7 +13,7 @@ router.post("/agregarProducto", (req, res) => {
 
 // obtener Productos
 
-router.get("/obtenerProductos", (req, res) => {
+router.get("/c", (req, res) => {
   productoSchema
     .find()
     .then((dato) => res.json(dato))
