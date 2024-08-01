@@ -16,6 +16,7 @@ router.post("/agregarUser", async (req,res)=>{
         });
 
         const user= await nuevoUser.save()
+        res.status(201).json({ message: 'Usuario creado exitosamente' });
         res.json(user)
 
     } catch (error) {
