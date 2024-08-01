@@ -32,7 +32,10 @@ router.post("/agregarUser", async (req,res)=>{
 router.get("/obtenerUser", (req,res)=>{
     userSchema
         .find()
-        .then((dato)=> res.json(dato))
+        .then((dato)=> 
+            // res.json(dato)
+            res.status(201).json(dato)
+        )
         .catch((error)=>res.json({message:error}))
 })
 
