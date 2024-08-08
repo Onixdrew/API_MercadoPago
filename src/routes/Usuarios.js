@@ -57,7 +57,7 @@ router.put("/actualizarUser/:id", (req,res)=>{
     const {nombre,correo,contraseña}=req.body;
     userSchema
         .updateOne({_id:id},{$set:{nombre,correo,contraseña}})
-        .then((dato)=> res.json(dato))
+        .then((dato)=> res.status(201).json({ message: 'Usuario actualizado correctamente!' }))
         .catch((error)=>res.json({message:error}))
 })
 
