@@ -69,7 +69,7 @@ router.delete("/eliminarUser/:id", (req,res)=>{
         .deleteOne({ _id: id })
         .then((result) => {
             if (result.deletedCount === 1) {
-                res.status(201).json({ message: "Usuario eliminado correctamente", "datos":dato })
+                res.status(201).json({ message: "Usuario eliminado correctamente" })
                
             } else {
                 res.status(404).json({ message: "Usuario no encontrado" });
